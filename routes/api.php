@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::middleware('auth:api')->group(function () {
+
+    // Task
+    Route::resource('task', 'TaskController', ['only' => ['index', 'show','update', 'store', 'destroy']]);
+    // Comments
+    Route::resource('comment', 'CommentController', ['only' => ['show','update', 'store', 'destroy']]);
+    
+});
+
+
+
